@@ -29,7 +29,6 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 0) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
-    self.tableView.scrollEnabled = NO;
     [self addSubview:self.tableView];
     
     self.backgroundColor = [UIColor colorWithRed:239/255.0 green:239/255.0 blue:241/255.0 alpha:0.7];
@@ -38,8 +37,9 @@
 
 - (void)setArr:(NSMutableArray *)array{
     self.dataArr = array;
-    if (array.count < 10) {
+    if (array.count <= 10) {
         self.tableView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 44 * array.count);
+        self.tableView.scrollEnabled = NO;
     }else{
         self.tableView.frame = CGRectMake(0, 0, [[UIScreen mainScreen] bounds].size.width, 440);
         self.tableView.scrollEnabled = YES;
